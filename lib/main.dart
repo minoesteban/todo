@@ -1,8 +1,11 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:todo/presentation/home_screen.dart';
+import 'package:todo/presentation/home/home_page.dart';
+import 'package:todo/services.dart';
 
 void main() {
+  Services.init();
+
   runApp(const TodoApp());
 }
 
@@ -21,7 +24,7 @@ class TodoApp extends StatelessWidget {
         ),
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: const HomeScreen(),
+      home: const HomePage(),
     );
   }
 }

@@ -1,16 +1,20 @@
 # todo
 
-A new Flutter project.
+## Flutter:
 
-## Getting Started
+- SDK Version: built for 3.13.3 (restricted in pubspec.yaml)
+- Managed by FVM
 
-This project is a starting point for a Flutter application.
+## How to run:
 
-A few resources to get you started if this is your first Flutter project:
+- Platforms: web, macos, ios, android
+- If using FVM, run `make fvm_run`
+- If not , run `make run`
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## App architecture & design
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- Clean Architecture - Presentation <-> Provider -> Use Cases -> Repositories -> Data Sources -> Network clients
+- For API data handling, using Data Transfer Objects + Mappers
+- For DI, using Service Locator
+- For State management, using Provider
+- No router implemented, as it is a single page app for now

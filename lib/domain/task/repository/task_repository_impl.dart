@@ -1,3 +1,4 @@
+import 'package:todo/data/task/mapper/task_dto_mapper.dart';
 import 'package:todo/data/task/task_data_source.dart';
 import 'package:todo/domain/task/data/task.dart';
 import 'package:todo/domain/task/repository/task_repository.dart';
@@ -7,28 +8,19 @@ class TaskRepositoryImpl implements TaskRepository {
 
   final TaskDataSource _dataSource;
 
-  @override
-  Future<void> addTask(Task task) async {
-    return _dataSource.addTask(task);
-  }
+  final TaskDTOMapper _mapper = const TaskDTOMapper();
 
   @override
-  Future<void> deleteTask(int id) async {
-    return _dataSource.deleteTask(id);
-  }
+  Future<Task> addTask(String title) async {
+    final dto = await _dataSource.addTask(title);
 
-  @override
-  Future<Task> getTask(int id) async {
-    return _dataSource.getTask(id);
+    return _mapper(dto);
   }
 
   @override
   Future<List<Task>> getTasks() async {
-    return _dataSource.getTasks();
-  }
+    final dto = await _dataSource.getTasks();
 
-  @override
-  Future<void> updateTask(Task task) async {
-    return _dataSource.updateTask(task);
+    return dto.tasks.map<Task>(_mapper).toList();
   }
 }

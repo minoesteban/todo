@@ -1,13 +1,8 @@
 import 'package:todo/domain/task/data/task.dart';
 
+// Single example of abstract class <-> implementation scheme to supoprt dependency injection
 abstract class TaskRepository {
   Future<List<Task>> getTasks();
 
-  Future<Task> getTask(int id);
-
-  Future<void> addTask(Task task);
-
-  Future<void> updateTask(Task task);
-
-  Future<void> deleteTask(int id);
+  Future<Task> addTask(String title);
 }
